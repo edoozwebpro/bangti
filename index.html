@@ -730,7 +730,7 @@ body { cursor: none; }
   width: 36px; height: 36px; border-radius: 50%;
   border: 1.5px solid rgba(170,221,0,0.7);
   transform: translate(-50%, -50%);
-  transition: left 0.12s ease, top 0.12s ease, width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 a:hover ~ #cur-ring, button:hover ~ #cur-ring { width: 52px; height: 52px; }
 
@@ -1069,8 +1069,8 @@ if (window.matchMedia('(pointer:fine)').matches) {
     glow.style.top = y + 'px';
     curDot.style.left = x + 'px';
     curDot.style.top = y + 'px';
-    rx += (x - rx) * 0.12;
-    ry += (y - ry) * 0.12;
+    rx += (x - rx) * 0.35;
+    ry += (y - ry) * 0.35;
     curRing.style.left = rx + 'px';
     curRing.style.top = ry + 'px';
   }, { passive: true });
