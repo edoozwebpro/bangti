@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/bangti_v3.html" },
+    { "source": "/galerie", "destination": "/galerie.html" }
+  ]
+}
