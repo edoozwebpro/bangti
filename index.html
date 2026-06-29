@@ -716,6 +716,23 @@ footer a:hover { color: var(--lime); }
   transform: translate(-50%,-50%);
   transition: left 0.12s, top 0.12s;
 }
+/* ── CUSTOM CURSOR ── */
+body { cursor: none; }
+#cur-dot {
+  position: fixed; pointer-events: none; z-index: 9999;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #AADD00;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s;
+}
+#cur-ring {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1.5px solid rgba(170,221,0,0.7);
+  transform: translate(-50%, -50%);
+  transition: left 0.12s ease, top 0.12s ease, width 0.2s, height 0.2s, opacity 0.2s;
+}
+a:hover ~ #cur-ring, button:hover ~ #cur-ring { width: 52px; height: 52px; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
@@ -755,6 +772,8 @@ footer a:hover { color: var(--lime); }
 <body>
 
 <div id="cursor-glow"></div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
 
 <!-- NAV -->
 <nav id="main-nav">
@@ -1040,11 +1059,29 @@ navLinks.querySelectorAll('a').forEach(a => {
 
 // ── CURSOR GLOW
 const glow = document.getElementById('cursor-glow');
+const curDot = document.getElementById('cur-dot');
+const curRing = document.getElementById('cur-ring');
 if (window.matchMedia('(pointer:fine)').matches) {
+  let rx = window.innerWidth/2, ry = window.innerHeight/2;
   document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
+    const x = e.clientX, y = e.clientY;
+    glow.style.left = x + 'px';
+    glow.style.top = y + 'px';
+    curDot.style.left = x + 'px';
+    curDot.style.top = y + 'px';
+    rx += (x - rx) * 0.12;
+    ry += (y - ry) * 0.12;
+    curRing.style.left = rx + 'px';
+    curRing.style.top = ry + 'px';
   }, { passive: true });
+  // Agrandir le ring sur les éléments cliquables
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { curRing.style.width = '52px'; curRing.style.height = '52px'; curRing.style.borderColor = 'rgba(170,221,0,1)'; });
+    el.addEventListener('mouseleave', () => { curRing.style.width = '36px'; curRing.style.height = '36px'; curRing.style.borderColor = 'rgba(170,221,0,0.7)'; });
+  });
+} else {
+  if (curDot) curDot.style.display = 'none';
+  if (curRing) curRing.style.display = 'none';
 }
 
 // ── PARALLAXE CARTES HERO
