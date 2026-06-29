@@ -492,7 +492,7 @@ h2 {
 }
 #lb-content { display: flex; flex-direction: column; gap: 16px; }
 #lb-visual {
-  width: 280px; height: 380px; border-radius: 16px;
+  width: 340px; height: 480px; border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 800; font-size: 5rem; color: rgba(255,255,255,0.12);
@@ -1186,7 +1186,7 @@ function openLb(i) {
 function renderLb() {
   const d = cards[lbIndex];
   const vis = document.getElementById('lb-visual');
-  vis.style.background = d.img ? `url('${d.img}') center/cover no-repeat` : d.bg;
+  vis.style.background = d.img ? `url('${d.img}') center/contain no-repeat` : d.bg; vis.style.backgroundColor = '#1a1a1a';
   vis.textContent = d.img ? '' : d.l;
   document.getElementById('lb-title').textContent = d.name;
   document.getElementById('lb-fmt').textContent = d.fmt;
