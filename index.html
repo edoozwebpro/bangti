@@ -748,7 +748,7 @@ footer a:hover { color: var(--lime); }
   *, .reveal, .mc1, .mc2, .mc3, .badge-ring, .av-float { animation: none !important; transition: none !important; }
 }
 </style>
-<script>try{if(localStorage.getItem("bangti-theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{const t=localStorage.getItem("bangti-theme");if(t==="light")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme","dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}</script>
 </head>
 <body>
 
@@ -1009,7 +1009,7 @@ const cards = [
   const root = document.documentElement;
   let saved = null;
   try { saved = localStorage.getItem('bangti-theme'); } catch (e) {}
-  if (saved === 'dark') root.setAttribute('data-theme', 'dark');
+  if (saved !== 'light') root.setAttribute('data-theme', 'dark');
   const btn = document.getElementById('theme-btn');
   if (btn) btn.addEventListener('click', () => {
     const dark = root.getAttribute('data-theme') === 'dark';
