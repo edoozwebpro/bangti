@@ -923,7 +923,7 @@ a:hover ~ #cur-ring, button:hover ~ #cur-ring { width: 52px; height: 52px; }
     <a href="mailto:contact@bangti.fr" class="btn-primary" style="display:inline-flex;margin-top:24px">Contacter Julien →</a>
     <div class="stats-row" style="margin-top:40px">
       <div class="stat-cell">
-        <span class="stat-val">100+</span>
+        <span class="stat-val">140+</span>
         <span class="stat-lbl">Créations réalisées</span>
       </div>
       <div class="stat-cell">
@@ -1012,13 +1012,13 @@ const STUDIO = 'data:image/webp;base64,UklGRsYTAQBXRUJQVlA4ILoTAQBQNQWdASqwBCUDP
 
 const cards = [
   { cat:'affiches', theme:'iles', name:'Hawaii — Aloha Paradise', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#1A0A2E,#5A2DA0)', l:'A', img:AFF1 },
-  { cat:'affiches', theme:'iles', name:'Polynésie — Âme du Pacifique', fmt:'A1 · quadri · satin', bg:'linear-gradient(145deg,#0A1A2E,#0E4A7A)', l:'A', img:AFF2 },
-  { cat:'affiches', theme:'iles', name:'Polynésie — Lagon Sud', fmt:'A3 · risographie · 2c', bg:'linear-gradient(145deg,#2E1A0A,#7A4010)', l:'A', img:AFF3 },
-  { cat:'affiches', theme:'aviation', name:'P-51 Mustang — Legend of the Skies', fmt:'A2 · quadri · mat', bg:'linear-gradient(145deg,#0A2E2E,#0E6E6E)', l:'A', img:AFF4 },
-  { cat:'affiches', theme:'villes', name:'Miami — City of Sun', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0A2030,#0E5A8A)', l:'A', img:AFF5 },
-  { cat:'affiches', theme:'iles', name:'Îles Kerguelen — Terre des Vents', fmt:'A1 · quadri · satin', bg:'linear-gradient(145deg,#0A1830,#11507A)', l:'A', img:AFF6 },
-  { cat:'affiches', theme:'villes', name:'Sydney — Harbour City', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0A2440,#1466A0)', l:'A', img:AFF7 },
-  { cat:'affiches', theme:'villes', name:'New York — The City That Never Sleeps', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0A1A3E,#1A3A8A)', l:'A', img:AFF8 },
+  { cat:'affiches', theme:'iles', name:'Saint-Louis — Porte de l\'Ouest', fmt:'A1 · quadri · satin', bg:'linear-gradient(145deg,#0A1A2E,#0E4A7A)', l:'A', img:AFF2 },
+  { cat:'affiches', theme:'iles', name:'Arches — Terre Pierre Temps', fmt:'A3 · risographie · 2c', bg:'linear-gradient(145deg,#2E1A0A,#7A4010)', l:'A', img:AFF3 },
+  { cat:'affiches', theme:'aviation', name:'Hawaii — Aloha State', fmt:'A2 · quadri · mat', bg:'linear-gradient(145deg,#0A2E2E,#0E6E6E)', l:'A', img:AFF4 },
+  { cat:'affiches', theme:'villes', name:'Los Angeles — City of Dreams', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0A2030,#0E5A8A)', l:'A', img:AFF5 },
+  { cat:'affiches', theme:'iles', name:'Monument Valley — Land of Legends', fmt:'A1 · quadri · satin', bg:'linear-gradient(145deg,#0A1830,#11507A)', l:'A', img:AFF6 },
+  { cat:'affiches', theme:'villes', name:'Salt Lake City — Crossroads of the West', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0A2440,#1466A0)', l:'A', img:AFF7 },
+  { cat:'affiches', theme:'villes', name:'San Diego — America\'s Finest City', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0A1A3E,#1A3A8A)', l:'A', img:AFF8 },
   { cat:'affiches', theme:'villes', name:'Paris — Ville de Lumière', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#1a1a2e,#16213e)', l:'A', img:AFF9 }
 ];
 
@@ -1122,7 +1122,7 @@ let activeCat = 'all';
 let activeView = 'list';
 const isFine = window.matchMedia('(pointer:fine)').matches;
 // motif bento : tailles attribuées par position
-const bentoSizes = ['lg', '', 'tall', '', 'wide', '', '', 'lg', 'tall', '', 'wide', '', 'lg', ''];
+const bentoSizes = ['lg', '', 'tall', '', 'wide', '', 'tall', 'lg', '', 'wide', 'lg', '', 'tall', ''];
 
 function matchCat(d) {
   if (activeCat === 'all') return true;
@@ -1271,9 +1271,9 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.12 },
-  { cat:'affiches', theme:'villes', name:'Tokyo — La Cité des Contrastes', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#1a0a2e,#2d1b69)', l:'A', img:AFF10 },
+  { cat:'affiches', theme:'villes', name:'New York — The City That Never Sleeps', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#1a0a2e,#2d1b69)', l:'A', img:AFF10 },
   { cat:'affiches', theme:'villes', name:'Amsterdam — Ville des Canaux', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0a1a2e,#1a4a6e)', l:'A', img:AFF11 },
-  { cat:'affiches', theme:'villes', name:'Sydney — Harbour City v2', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0A2440,#1466A0)', l:'A', img:AFF12 },
+  { cat:'affiches', theme:'villes', name:'Sydney — Harbour City', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0A2440,#1466A0)', l:'A', img:AFF12 },
   { cat:'affiches', theme:'villes', name:'Rome — La Ville Éternelle', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#2e1a0a,#8b4513)', l:'A', img:AFF13 },
   { cat:'affiches', theme:'villes', name:'Lisbonne — Saudade & Lumière', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#1a2e0a,#2d6e1b)', l:'A', img:AFF14 });
 
