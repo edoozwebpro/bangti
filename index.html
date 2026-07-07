@@ -1127,8 +1127,7 @@ const bentoSizes = ['lg', '', 'tall', '', 'wide', '', 'tall', 'lg', '', 'wide', 
 
 function matchCat(d) {
   if (activeCat === 'all') return true;
-  if (activeCat === 'iles' || activeCat === 'villes' || activeCat === 'aviation') return d.theme === activeCat;
-  return d.cat === activeCat;
+  return d.theme === activeCat || d.cat === activeCat;
 }
 function visibleCards() {
   return cards.map((d, i) => ({ d, i }))
@@ -1189,10 +1188,9 @@ function buildGrid() {
 function rebuild() {
   buildList();
   buildGrid();
-  // Mettre à jour les compteurs de chaque filtre
   document.querySelectorAll('.filter').forEach(btn => {
     const cat = btn.dataset.cat;
-    const count = cat === 'all' ? cards.length : cards.filter(d => d.theme === cat || d.cat === cat).length;
+    const count = cards.filter(d => cat === 'all' ? true : (d.theme === cat || d.cat === cat)).length;
     const span = btn.querySelector('.count');
     if (span) span.textContent = count;
   });
