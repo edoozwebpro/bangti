@@ -860,10 +860,11 @@ a:hover ~ #cur-ring, button:hover ~ #cur-ring { width: 52px; height: 52px; }
   <h2 style="margin-bottom:32px">Ce que Bangti produit.</h2>
   <div class="galerie-head">
     <div class="filters">
-      <button class="filter active" data-cat="all">Tout <span class="count">7</span></button>
+      <button class="filter active" data-cat="all">Tout <span class="count">14</span></button>
       <button class="filter" data-cat="iles">Îles <span class="count">4</span></button>
-      <button class="filter" data-cat="villes">Villes <span class="count">2</span></button>
+      <button class="filter" data-cat="villes">Villes <span class="count">9</span></button>
       <button class="filter" data-cat="aviation">Aviation <span class="count">1</span></button>
+      <button class="filter" data-cat="nature">Nature <span class="count">0</span></button>
     </div>
     <div class="view-toggle">
       <button class="active" data-view="list">Liste</button>
@@ -1188,6 +1189,13 @@ function buildGrid() {
 function rebuild() {
   buildList();
   buildGrid();
+  // Mettre à jour les compteurs de chaque filtre
+  document.querySelectorAll('.filter').forEach(btn => {
+    const cat = btn.dataset.cat;
+    const count = cat === 'all' ? cards.length : cards.filter(d => d.theme === cat || d.cat === cat).length;
+    const span = btn.querySelector('.count');
+    if (span) span.textContent = count;
+  });
 }
 
 // Aperçu flottant qui suit le curseur
