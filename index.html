@@ -1318,6 +1318,9 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+}, 1200);
 </script>
 </body>
 </html>
