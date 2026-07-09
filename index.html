@@ -1315,12 +1315,7 @@ const observer = new IntersectionObserver(entries => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 },
-  { cat:'affiches', theme:'villes', name:'Saint-Louis — Porte de l\'Ouest', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#1a0a2e,#2d1b69)', l:'A', img:AFF10 },
-  { cat:'affiches', theme:'iles', name:'Hawaii — Aloha State', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0a1a2e,#1a4a6e)', l:'A', img:AFF11 },
-  { cat:'affiches', theme:'nature', name:'Monument Valley — Land of Legends', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#0A2440,#1466A0)', l:'A', img:AFF12 },
-  { cat:'affiches', theme:'villes', name:'Salt Lake City — Crossroads of the West', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#2e1a0a,#8b4513)', l:'A', img:AFF13 },
-  { cat:'affiches', theme:'villes', name:'San Diego — America\'s Finest City', fmt:'A2 · quadri · offset', bg:'linear-gradient(145deg,#1a2e0a,#2d6e1b)', l:'A', img:AFF14 });
+}, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
