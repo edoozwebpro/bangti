@@ -1117,7 +1117,7 @@ const cards = [
 
 // ── STUDIO IMAGE
 const studioEl = document.getElementById('studio-img');
-if (studioEl && typeof STUDIO !== 'undefined') studioEl.style.background = `url('${STUDIO}') center/cover no-repeat`;
+if (studioEl && typeof STUDIO !== 'undefined') studioEl.src = STUDIO;
 
 // ── THEME
 const root = document.documentElement;
