@@ -843,6 +843,14 @@ a:hover ~ #cur-ring, button:hover ~ #cur-ring { width: 52px; height: 52px; }
   .carte-cta-text h3 { font-size: 1.2rem; }
 }
 
+
+.mock-card[id] { background-size: cover; background-position: center; position: relative; }
+.mock-card[id]::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.75) 85%);
+  z-index: 0;
+}
+.mock-card[id] .mock-label, .mock-card[id] .mock-title, .mock-card[id] .mock-format { position: relative; z-index: 1; }
 </style>
 </head>
 <body>
@@ -891,24 +899,21 @@ a:hover ~ #cur-ring, button:hover ~ #cur-ring { width: 52px; height: 52px; }
   <div class="hero-right">
     <div class="mock-scene" id="mock-scene">
       <div class="mc-wrap w1" data-depth="26">
-        <div class="mc1 mock-card">
-          <div class="mc-inner-art"></div>
+        <div class="mc1 mock-card" id="mc1-card">
           <div class="mock-label">Affiche</div>
-          <div class="mock-title">Hawaii</div>
-          <div class="mock-format">Aloha Paradise</div>
+          <div class="mock-title">Los Angeles</div>
+          <div class="mock-format">City of Dreams</div>
         </div>
       </div>
       <div class="mc-wrap w2" data-depth="14">
-        <div class="mc2 mock-card">
-          <div class="mc-inner-art"></div>
+        <div class="mc2 mock-card" id="mc2-card">
           <div class="mock-label">Affiche</div>
           <div class="mock-title">Miami</div>
           <div class="mock-format">City of Sun</div>
         </div>
       </div>
       <div class="mc-wrap w3" data-depth="38">
-        <div class="mc3 mock-card">
-          <div class="mc-inner-art"></div>
+        <div class="mc3 mock-card" id="mc3-card">
           <div class="mock-label">Affiche</div>
           <div class="mock-title">Sydney</div>
           <div class="mock-format">Harbour City</div>
@@ -1122,6 +1127,14 @@ const cards = [
 // ── STUDIO IMAGE
 const studioEl = document.getElementById('studio-img');
 if (studioEl && typeof STUDIO !== 'undefined') studioEl.src = STUDIO;
+
+// Mock cards hero avec vraies images
+const mc1El = document.getElementById('mc1-card');
+const mc2El = document.getElementById('mc2-card');
+const mc3El = document.getElementById('mc3-card');
+if (mc1El && typeof AFF1 !== 'undefined') mc1El.style.backgroundImage = `url('${AFF1}')`;
+if (mc2El && typeof AFF5 !== 'undefined') mc2El.style.backgroundImage = `url('${AFF5}')`;
+if (mc3El && typeof AFF7 !== 'undefined') mc3El.style.backgroundImage = `url('${AFF7}')`;
 
 // ── THEME
 const root = document.documentElement;
