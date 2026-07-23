@@ -11,6 +11,10 @@
     {
       "source": "/moon",
       "destination": "/moon/index.html"
+    },
+    {
+      "source": "/boumbrigade",
+      "destination": "/boumbrigade/index.html"
     }
   ]
 }
