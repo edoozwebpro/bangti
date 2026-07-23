@@ -1,3 +1,15 @@
-if(!self.define){let e,s={};const n=(n,i)=>(n=new URL(n+".js",i).href,s[n]||new Promise(s=>{if("document"in self){const e=document.createElement("script");e.src=n,e.onload=s,document.head.appendChild(e)}else e=n,importScripts(n),s()}).then(()=>{let e=s[n];if(!e)throw new Error(`Module ${n} didn’t register its module`);return e}));self.define=(i,r)=>{const t=e||("document"in self?document.currentScript.src:"")||location.href;if(s[t])return;let o={};const a=e=>n(e,t),l={module:{uri:t},exports:o,require:a};s[t]=Promise.all(i.map(e=>l[e]||a(e))).then(e=>(r(...e),o))}}define(["./workbox-6c06881d"],function(e){"use strict";self.skipWaiting(),e.clientsClaim(),e.precacheAndRoute([{url:"registerSW.js",revision:"79fe888ac92117bf08ab57d335cbb30d"},{url:"index.html",revision:"9a49ddacbacaa40a1950f1a98e6ca361"},{url:"data/missions.json",revision:"9a1dbec93148a13982ef5408192daba3"},{url:"data/maria.json",revision:"4bfffe995463564efd97d3020c7954c8"},{url:"data/craters.json",revision:"c69810549a18ca49e5dbebf72bac6ad0"},{url:"assets/three-CtRktlDn.js",revision:null},{url:"assets/search.worker-Zpe0nPB0.js",revision:null},{url:"assets/r3f-DhXSadsh.js",revision:null},{url:"assets/motion-EGWVJc4o.js",revision:null},{url:"assets/index-G0jMO901.js",revision:null},{url:"assets/index-C4LHbFoi.css",revision:null},{url:"manifest.webmanifest",revision:"6d549c0671e5a736b3c27066d43932ce"}],{}),e.cleanupOutdatedCaches(),e.registerRoute(new e.NavigationRoute(e.createHandlerBoundToURL("index.html"))),e.registerRoute(/\/textures\/.*\.(ktx2|webp|jpg|png)$/,new e.CacheFirst({cacheName:"moon-textures",plugins:[new e.ExpirationPlugin({maxEntries:128,maxAgeSeconds:2592e3})]}),"GET"),e.registerRoute(/\/data\/.*\.json$/,new e.StaleWhileRevalidate({cacheName:"moon-data",plugins:[]}),"GET")});
-//# sourceMappingURL=sw.js.map
-//# sourceMappingURL=sw.js.map
+// Self-destructing service worker.
+// Replaces the old Moon Explorer PWA worker: unregisters itself and wipes
+// its caches so returning visitors always get the live site.
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+      await self.registration.unregister();
+      const clients = await self.clients.matchAll({ type: 'window' });
+      clients.forEach((c) => c.navigate(c.url));
+    })(),
+  );
+});

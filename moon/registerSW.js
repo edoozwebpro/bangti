@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/moon/sw.js', { scope: '/moon/' })})}
+// PWA retired — intentionally empty.
